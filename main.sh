@@ -5,6 +5,7 @@ if [[ "$today" != $(< run_today) ]] ; then
     random=${random%.*}
     if [ $random -gt 90 ] ; then
         echo run
+        curl -X POST -H "Authorization: $PAT" -H "Accept: application/vnd.github.v3+json" https://api.github.com/repos/wujun8/cccat/actions/workflows/MAIN/dispatches -d '{"ref":"main"}'
         echo $today > run_today
     fi
 else
