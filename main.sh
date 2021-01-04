@@ -1,10 +1,10 @@
-file=run_today
+today=$(date +"%F")
 
-if [ ! -e "$file" ] ; then
+if [ "$today" != $(< run_today) ] ; then
     random=$(awk 'BEGIN { srand(); print rand() * 100 }')
     if [[ $random -gt 90 ]] ; then
         echo run
-        touch "$file"
+        echo $today > run_today
     fi
 else
     echo already run today
