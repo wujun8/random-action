@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: Main
 
 # Controls when the action will run. 
 on:
@@ -22,20 +22,13 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      - name: prepare
-        uses: actions/download-artifact@v2
-        with:
-          name: run_today
-          path: run_today
-
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
         shell: bash
         run: |
-          echo Add other actions to build,
+          echo main.sh
           sh main.sh
-      - name: Upload result
-        uses: actions/upload-artifact@v2
+      
+      - uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          name: run_today
-          path: run_today
+          commit_message: Apply if run changes
