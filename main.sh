@@ -2,7 +2,8 @@ today=$(date +"%F")
 
 if [[ "$today" != $(< run_today) ]] ; then
     random=$(awk 'BEGIN { srand(); print rand() * 100 }')
-    if [[ $random -gt 90 ]] ; then
+    random=${random%.*}
+    if [ $random -gt 90 ] ; then
         echo run
         echo $today > run_today
     fi
