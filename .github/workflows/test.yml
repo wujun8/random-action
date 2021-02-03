@@ -29,6 +29,7 @@ jobs:
         shell: bash
         env:
           PAT: ${{ secrets.PAT }}
+          DDTOKEN: ${{ secrets.DDTOKEN }}
         run: |
           echo test.sh
           bash test.sh
