@@ -6,6 +6,7 @@ if [[ "$today" != $(< run_today) ]] ; then
     if [ $random -gt 79 ] ; then
         echo run
         curl -X POST -H "Authorization: token $PAT" -H "Accept: application/vnd.github.v3+json" https://api.github.com/repos/wujun8/cccat/dispatches -d '{"event_type": "api"}'
+        curl -X POST -H "Authorization: token $PAT" -H "Accept: application/vnd.github.v3+json" https://api.github.com/repos/wujun8/textnow-autosend/dispatches -d '{"event_type": "api"}'
         echo $today > run_today
     else
         echo random=$random
